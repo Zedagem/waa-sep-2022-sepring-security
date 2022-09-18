@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/uaa")
+@CrossOrigin
 public class UaaController {
 
     @Autowired

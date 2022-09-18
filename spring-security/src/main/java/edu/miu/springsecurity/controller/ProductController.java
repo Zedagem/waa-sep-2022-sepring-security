@@ -31,7 +31,8 @@ public class ProductController {
     public List<Product> getAll() {
         return productService.getAll();
     }
-
+    @GetMapping("/homepage")
+    void homepage(){}
     @GetMapping("/{id}")
     public ResponseEntity<Product> getById(@PathVariable int id) {
         var product = productService.getById(id);

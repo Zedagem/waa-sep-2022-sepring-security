@@ -18,7 +18,6 @@ public class User {
     private String email;
     private String password;
     private String firstname;
-    private String lastname;
 
     @JsonBackReference
     @OneToOne(mappedBy = "user")
