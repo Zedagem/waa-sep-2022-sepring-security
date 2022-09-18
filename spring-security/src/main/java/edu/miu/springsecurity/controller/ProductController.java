@@ -1,6 +1,7 @@
 package edu.miu.springsecurity.controller;
 
 
+import edu.miu.springsecurity.dto.ProductDto;
 import edu.miu.springsecurity.entity.Product;
 import edu.miu.springsecurity.entity.Review;
 import edu.miu.springsecurity.service.ProductService;
@@ -21,8 +22,8 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @PostMapping(consumes = {"application/json"})
-    public void save(@RequestBody Product p) {
+    @PostMapping()
+    public void save(@RequestBody ProductDto p) {
         productService.save(p);
     }
 

@@ -23,12 +23,12 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
 
-//    @JsonManagedReference
+    @JsonManagedReference
     @OneToOne
     @JoinColumn(name = "id_user")
     private User user;
 
-//    @JsonManagedReference
+    @JsonManagedReference
     @ManyToMany(mappedBy = "products")
     private List<Category> categories;
 

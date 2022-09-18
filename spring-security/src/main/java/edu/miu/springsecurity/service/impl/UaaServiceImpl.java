@@ -1,11 +1,13 @@
 package edu.miu.springsecurity.service.impl;
 
+import edu.miu.springsecurity.dto.UserDto;
 import edu.miu.springsecurity.entity.User;
 import edu.miu.springsecurity.model.LoginRequest;
 import edu.miu.springsecurity.model.LoginResponse;
 import edu.miu.springsecurity.repository.UserRepo;
 import edu.miu.springsecurity.service.UaaService;
 import edu.miu.springsecurity.util.JwtUtil;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,6 +24,9 @@ public class UaaServiceImpl implements UaaService {
     UserRepo userRepo;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    ModelMapper mapper;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -45,8 +50,9 @@ public class UaaServiceImpl implements UaaService {
     }
 
     @Override
-    public void signUp(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public void signUp(UserDto userDto) {
+        userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        var user = mapper.map(userDto,User.class);
         userRepo.save(user);
 
 

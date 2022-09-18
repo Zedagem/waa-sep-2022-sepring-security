@@ -20,7 +20,7 @@ public class User {
     private String firstname;
     private String lastname;
 
-//    @JsonBackReference
+    @JsonBackReference
     @OneToOne(mappedBy = "user")
     private Product product;
 

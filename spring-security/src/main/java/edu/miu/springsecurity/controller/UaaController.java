@@ -2,6 +2,7 @@ package edu.miu.springsecurity.controller;
 
 
 
+import edu.miu.springsecurity.dto.UserDto;
 import edu.miu.springsecurity.entity.User;
 import edu.miu.springsecurity.model.LoginRequest;
 import edu.miu.springsecurity.service.UaaService;
@@ -23,7 +24,7 @@ public class UaaController {
     }
 
     @PostMapping("/signup")
-    void signUp(@RequestBody User user){
+    void signUp(@RequestBody UserDto user){
         uaaService.signUp(user);
     }
 
